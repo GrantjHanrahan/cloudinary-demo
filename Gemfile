@@ -58,6 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails_12factor', group: :production
 gem 'pry-rails'
+gem 'cloudinary'
+
 gem 'annotate'
 gem 'jquery-rails'
-gem 'cloudinary'
