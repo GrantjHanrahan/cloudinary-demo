@@ -38,6 +38,18 @@ class AnimalsController < ApplicationController
       redirect_to(animal_path(animal))
     end
 
+    def update
+      animal = Animal.find(params[:id])
+      if params[:file].present?
+        req = Cloudinary::Uploader.upload(params[:file])
+        animal.image = req["public_id"]
+      end
+      # We're using update_attributes here because we don't want to make a PUT request (.update to update the attributes in animal_params, then .save to update the image)
+      animal.update_attributes(animal_params)
+      animal.save
+      redirect_to(animal_path(animal))
+    end
+
     private
 
     def animal_params
